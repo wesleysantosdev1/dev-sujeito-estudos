@@ -4,7 +4,8 @@ import { StyleSheet, Text, View } from 'react-native';
 export default function App() {
   return (
     <View style={styles.container}>
-      <Text>you are welcome bitch</Text>
+      <Text>Seja bem vindo ao AppCamera</Text>
+      <Text>Todos os tipos de cameras que voce precisa em um so lugar</Text>
       <StatusBar style="auto" />
     </View>
   );
