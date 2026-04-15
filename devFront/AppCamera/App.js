@@ -33,6 +33,26 @@ export default function App() {
     setPhoto(result.assets[0].uri)
   }
 
+  async function openCamera() {
+    const permission = await ImagePicker.requestCameraPermissionsAsync();
+
+    if(!permission.granted) {
+      alert('Permissao da camera necessaria!');
+      return;
+    }
+
+    const result = await ImagePicker.launchCameraAsync({
+      quality: 1, 
+      allowsMultipleSelection: true, 
+      selectionLimit: 3,
+    });
+
+    if (result.canceled) return;
+
+    console.log(result.assets)
+    setPhoto(result.assets[0].uri)
+  }
+
   return (
     <SafeAreaView style={styles.container}>
       <View style={styles.buttons}>
@@ -43,7 +63,10 @@ export default function App() {
           <Text style={styles.text}>Abrir album</Text>
         </TouchableOpacity>
 
-        <TouchableOpacity style={styles.button}>
+        <TouchableOpacity 
+          style={styles.button}
+          onPress={openCamera}
+        >
           <Text style={styles.text}>Abrir camera</Text>
         </TouchableOpacity>
       </View>
